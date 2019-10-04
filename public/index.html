@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/gameSocket.js"></script>
+  </head>
+<body>
+
+<h2>HTML Image</h2>
+<!-- <ul class='circle-container'>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-1" onclick="playFromDeck1()"></img></li>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-2" onclick="playFromDeck2()"></img></li>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-3"onclick=" playFromDeck3()"></img></li>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-4"onclick=" playFromDeck4()"></img></li>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-5"onclick=" playFromDeck5()"></img></li>
+    <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-6"onclick=" playFromDeck6()"></img></li>
+</ul> -->
+
+<div id="cards-to-pick">
+
+  <div class ="playFromDeck" id="playFromDeck1">
+    <img src="imgs/card_back_1.png" alt="Trulli"  id="deck-1" onclick="playFromDeck1()"></img>
+  </div>
+
+  <div class ="playFromDeck" id="playFromDeck2">
+    <img src="imgs/card_back_2.png" alt="Trulli"  id="deck-2" onclick="playFromDeck2()"></img>
+  </div>
+
+
+  <div class ="playFromDeck" id="playFromDeck3">
+    <img src="imgs/card_back_3.png" alt="Trulli"  id="deck-3"onclick=" playFromDeck3()"></img>
+  </div>
+
+  <div class ="middle-pile" id="middle-pile">
+    
+  </div>
+
+  <div class ="playFromDeck" id="playFromDeck4">
+    <img src="imgs/card_back_4.png" alt="Trulli"  id="deck-4"onclick=" playFromDeck4()"></img>
+  </div>
+
+
+  <div class ="playFromDeck" id="playFromDeck5">
+    <img src="imgs/card_back_5.png" alt="Trulli" id="deck-5"onclick=" playFromDeck5()"></img>
+  </div>
+
+  <div class ="playFromDeck" id="playFromDeck6">
+    <img src="imgs/card_back_6.png" alt="Trulli"  id="deck-6"onclick=" playFromDeck6()"></img>
+  </div>
+
+  <div class ="playFromDeck" id="playFromDeck7">
+    <img src="imgs/card_back_7.png" alt="Trulli"  id="deck-7"onclick=" playFromDeck7()"></img>
+  </div>
+
+</div>
+
+<button onclick="resetGame()"> Reset</button>
+<section>
+<!-- <div id="cards-middle-pile"></div> -->
+
+<div id="user1-pile"></div>
+
+</section>
+
+<br>
+
+<section>
+  <div id="user2-pile"></div>
+
+</section>
+
+
+</body>
+</html>
+

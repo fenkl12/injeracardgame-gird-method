@@ -1,0 +1,133 @@
+html, 
+body {
+    height: 100%;
+}
+
+#cards-to-pick{
+
+    background-color: green;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 20% 60% 20%;
+    height: 80%;
+    
+
+}
+
+#cards-to-pick img{
+   width: 55%;
+
+
+}
+
+
+#playFromDeck1{
+    width: 50%;
+    grid-column-start: 2;
+    margin: auto;
+    text-align: center;
+ 
+    
+}
+#playFromDeck2{
+    width: 50%;
+    grid-column-start: 3;
+    margin: auto;
+    text-align: center;
+}
+#playFromDeck3{
+    width: 50%;
+    grid-column-start: 1;
+    margin: auto;
+    text-align: center;
+}
+#playFromDeck4{
+    width: 50%;
+    grid-column-start: 4;
+    margin: auto;
+    text-align: center;
+}
+#playFromDeck5{
+    width: 50%;
+    grid-column-start: 2;
+    margin: auto;
+    text-align: center;
+}
+#playFromDeck6{
+    width: 50%;
+    grid-column-start: 3;
+    margin: auto;
+    text-align: center;
+}
+#playFromDeck7{
+    width: 50%;
+    grid-column-start: 4;
+    margin: auto;
+    text-align: center;
+    
+}
+
+.middle-pile{
+    
+    
+    text-align: center;
+    
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    border-bottom-left-radius: 30%;
+    padding: 3%;
+    background-color: red;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+
+}
+.middle-pile-cards{
+    display: inline;
+ 
+    
+
+}
+
+#middle-pile img{
+    width: 12%;
+    display: initial;
+    margin: 1%;
+    
+ }
+
+/* images within this id tag */
+#user1-pile img{
+ 
+    /* height does not seem to matter */
+    /* height: 50%; */
+    width: 10%;
+    
+}
+
+.user-1-pile{
+    display: inline;
+
+}
+#user-1-pile img{
+    width: 10%;
+    display: initial;
+    margin: 1%;
+    
+ }
+
+.user-2-pile{
+    display: inline;
+    background: blue;
+
+}
+#user-2-pile img{
+    width: 10%;
+    display: initial;
+    margin: 1%;
+    
+ }
