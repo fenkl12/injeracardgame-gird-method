@@ -1,21 +1,34 @@
 class User{
+  
   constructor(){
-    
     this.userName()
-    this.mycards()
+    // this.mycards()
+    this.userCards = [];
+    this.length = 0; 
+    
   }
   
   userName(){
-    var id = socket.io.engine.id 
-    return id
+    // var id = socket.io.engine.id 
+    // return id
 
   }
-  mycards(cards){
-    var mycardsArray = []
-    mycardsArray.push.apply(mycardsArray,cards)
-    return mycardsArray
-  }
 
+
+  // mycards(cards){
+  //   var mycardsArray = []
+  //   mycardsArray.push.apply(mycardsArray,cards)
+  //   return mycardsArray
+  // }
+
+  push(cards) { 
+ 
+    this.userCards[this.length] = cards; 
+   
+    this.length++; 
+    return this.userCards
+
+} 
 }
 
 
@@ -110,17 +123,17 @@ function resetGame(){
 
 var nonMatchPile = []
 var matchedCards = []
-var matchedCardsUser1 = []
-var matchedCardsUser2 = []
 
-
+// make sure to move out of function or everything will reset 
+const user1 = new User();
+const user2 = new User();
 
 function checkAndMovetoPiles(DeckXPickedCardObject) {
-  var id = socket.io.engine.id 
+  // var id = socket.io.engine.id 
   
   var playerId =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[1]]);
-  const user1 = new User();
-  const user2 = new User();
+  
+
   
 
   // get first value pair and get stiring of value 
@@ -140,6 +153,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
         
         // console.log("We have a match")
         matchedCards.push(nonMatchPile[i],DeckXPickedCard)
+        
         // console.log(nonMatchPile[i],DeckXPickedCard);
         
 
@@ -163,9 +177,9 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
             nonMatchPile.splice(index, 1);
             }
      
-      //  console.log("i is ",i);
+        // console.log("i is ",i);
       })
-    .then(function(){    
+    .then(function(){
       // console.log("Matched Cards = ",matchedCards);
       // console.log("Pile = ",nonMatchPile);  
 
@@ -191,9 +205,14 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
     .then (function(){
       
       
-    
-      if (user1.userName() == playerId ){
-        // console.log(user1.userName());
+      var id = socket.io.engine.id 
+      if (id == playerId ){
+      // if matched cards is not empty push to user 1
+        if (matchedCards.length !== 0 ){
+          user1.push(matchedCards)
+        }
+        
+        // console.log(id);
         // console.log(playerId);
               // move matched card to user 1 pile 
       
@@ -209,15 +228,17 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
      
      // diplay user1 cards 
      // console.log("User 1 number of cards",user1.mycards(matchedCards).length);
-     for (var i = 0; i < user1.mycards(matchedCards).length; i++){
-            
+     for (var i = 0; i < user1.userCards.length; i++){
+      for (var b = 0; b < user1.userCards[i].length; b++){
+
      const createUser1PileDiv = document.createElement('div')
      createUser1PileDiv.className = "user-1-pile"
-     createUser1PileDiv.innerHTML = `<img src="imgs/PNG/${matchedCards[i]}.png" alt="Trulli"></img>`;
+     createUser1PileDiv.innerHTML = `<img src="imgs/PNG/${user1.userCards[i][b]}.png" alt="Trulli"></img>`;
      document.getElementById('user1-pile').appendChild(createUser1PileDiv);
     
 
      }
+      }
      
       }
       
@@ -225,6 +246,11 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       
       
       else {
+
+      if (matchedCards.length !== 0 ){
+          user2.push(matchedCards)
+        }
+              
         
         // console.log(user2.userName());
         // console.log(playerId);
@@ -241,18 +267,25 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
        
        // diplay user2 cards 
         // console.log("User 2 number of cards",user2.mycards(matchedCards).length);
-       for (var i = 0; i < user1.mycards(matchedCards).length; i++){
-              
-       const createUser2PileDiv = document.createElement('div')
-       createUser2PileDiv.className = "user-2-pile"
-       createUser2PileDiv.innerHTML = `<img src="imgs/PNG/${matchedCards[i]}.png" alt="Trulli"></img>`;
-       document.getElementById('user2-pile').appendChild(createUser2PileDiv);
-  
-       }
+        for (var i = 0; i < user2.userCards.length; i++){
+          for (var b = 0; b < user2.userCards[i].length; b++){
+    
+         const createUser1PileDiv = document.createElement('div')
+         createUser1PileDiv.className = "user-2-pile"
+         createUser1PileDiv.innerHTML = `<img src="imgs/PNG/${user2.userCards[i][b]}.png" alt="Trulli"></img>`;
+         document.getElementById('user2-pile').appendChild(createUser1PileDiv);
+        
+    
+         }
+          }
         
       }
 
     })
+    .then(function(){
+      // empty matchedCards array 
+        matchedCards = []
+      })
     .catch(function (e){
       console.log(e);
     })
