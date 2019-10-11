@@ -1,3 +1,4 @@
+// var socket = io()
 class User{
   
   constructor(){
@@ -75,7 +76,10 @@ class Deck{
       
     }
   }
-  
+ 
+
+function dealCards() {
+  console.log("dealCards clicked");
 const deck1 = new Deck();
 
 
@@ -92,7 +96,7 @@ var injeraCardDeck3 = []
 var injeraCardDeck4 = []
 var injeraCardDeck5 = []
 var injeraCardDeck6 = []
-var injeraCardDeck7 = []
+
 
 // view full deck
 // console.log(deck1.deck);
@@ -105,7 +109,7 @@ for ( var i = 0; i < deck1.deck.length;){
     injeraCardDeck4.push(deck1.deal())
     injeraCardDeck5.push(deck1.deal())
     injeraCardDeck6.push(deck1.deal())
-    injeraCardDeck7.push(deck1.deal())
+
 
   }
 var injeraCardDeck1filtered = injeraCardDeck1.filter(n => n)
@@ -114,7 +118,22 @@ var injeraCardDeck3filtered = injeraCardDeck3.filter(n => n)
 var injeraCardDeck4filtered = injeraCardDeck4.filter(n => n)
 var injeraCardDeck5filtered = injeraCardDeck5.filter(n => n)
 var injeraCardDeck6filtered = injeraCardDeck6.filter(n => n)
-var injeraCardDeck7filtered = injeraCardDeck7.filter(n => n)
+
+// emit the dealt cards to all users 
+socket.emit('dealtCardsArray', {injeraCardDeck1filtered: injeraCardDeck1filtered,
+                                injeraCardDeck2filtered: injeraCardDeck2filtered,
+                                injeraCardDeck3filtered: injeraCardDeck3filtered,
+                                injeraCardDeck4filtered: injeraCardDeck4filtered,
+                                injeraCardDeck5filtered: injeraCardDeck5filtered,
+                                injeraCardDeck6filtered: injeraCardDeck6filtered});
+
+
+    
+}
+
+
+
+
 
 function resetGame(){
     location.reload()
@@ -129,15 +148,16 @@ const user1 = new User();
 const user2 = new User();
 
 function checkAndMovetoPiles(DeckXPickedCardObject) {
-  // var id = socket.io.engine.id 
-  
+ 
   var playerId =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[1]]);
+  console.log(playerId);
   
 
   
 
   // get first value pair and get stiring of value 
   var DeckXPickedCard =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[0]]);
+  console.log(DeckXPickedCard);
 
   var valueToCheck = DeckXPickedCard.split(" ")[0]
     // console.log("Card to check is",valueToCheck);
@@ -207,6 +227,8 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       
       var id = socket.io.engine.id 
       if (id == playerId ){
+
+
       // if matched cards is not empty push to user 1
         if (matchedCards.length !== 0 ){
           user1.push(matchedCards)
@@ -230,6 +252,9 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
      // console.log("User 1 number of cards",user1.mycards(matchedCards).length);
      for (var i = 0; i < user1.userCards.length; i++){
       for (var b = 0; b < user1.userCards[i].length; b++){
+     var cardCount  = user1.userCards.length
+     // double because cards pairs are list as 1 
+      document.getElementById('user1-card-count').innerText = ("You Have "+ cardCount*2 + " Cards")
 
      const createUser1PileDiv = document.createElement('div')
      createUser1PileDiv.className = "user-1-pile"
@@ -241,11 +266,9 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       }
      
       }
-      
-      
-      
-      
+
       else {
+
 
       if (matchedCards.length !== 0 ){
           user2.push(matchedCards)
@@ -269,6 +292,9 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
         // console.log("User 2 number of cards",user2.mycards(matchedCards).length);
         for (var i = 0; i < user2.userCards.length; i++){
           for (var b = 0; b < user2.userCards[i].length; b++){
+            var cardCount  = user2.userCards.length
+            // double because cards pairs are list as 1 
+            document.getElementById('user2-card-count').innerText = ("You oponent has "+ cardCount*2 + " Cards")
     
          const createUser1PileDiv = document.createElement('div')
          createUser1PileDiv.className = "user-2-pile"
@@ -294,24 +320,55 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
 }
 
 
+
+
+// socket.on('deck1Click', function (data) {
+//     console.log(data.data.pop());
+//    var Deck1PickedCard = data.data.pop()
+//    var id = socket.io.engine.id 
+
+//   socket.emit('myClick', {event: Deck1PickedCard, id:id});
+
+// })
+
+
+// get full card deck from gameSocket and push to array
+// socket.on('deck1Click', function (data) {
+//   unifiedCardDeck.push(data.data)
+// })
+
+
+// function playFromDeck1(){
+//   console.log(unifiedCardDeck);  
+//   // // var Deck1PickedCard = injeraCardDeck1filtered.pop()
+//   // // // console.log("Picked Card is:",Deck2PickedCard)
+
+//   // // var id = socket.io.engine.id 
+
+//   // socket.emit('myClick', {event: Deck1PickedCard, id:id});
+// }
+
+// working____________________________________________________________________________ now need to fix two cards match on checkAndMovetoPiles
 function playFromDeck1(){
 
-    var Deck1PickedCard = injeraCardDeck1filtered.pop()
-    // console.log("Picked Card is:",Deck1PickedCard)
-    
-    var id = socket.io.engine.id 
-
-    socket.emit('myClick', {event: Deck1PickedCard, id:id});
+  var id = socket.io.engine.id 
+  socket.emit('deck1Click', {id:id});
 }
 
 function playFromDeck2(){
-    var Deck2PickedCard = injeraCardDeck2filtered.pop()
-    // console.log("Picked Card is:",Deck2PickedCard)
 
-    var id = socket.io.engine.id 
-
-    socket.emit('myClick', {event: Deck2PickedCard, id:id});
+  var id = socket.io.engine.id 
+  socket.emit('deck2Click', {id:id});
 }
+
+// function playFromDeck2(){
+//     var Deck2PickedCard = injeraCardDeck2filtered.pop()
+//     // console.log("Picked Card is:",Deck2PickedCard)
+
+//     var id = socket.io.engine.id 
+
+//     socket.emit('myClick', {event: Deck2PickedCard, id:id});
+// }
 
 function playFromDeck3(){
   var Deck3PickedCard = injeraCardDeck3filtered.pop()
@@ -346,12 +403,14 @@ function playFromDeck6(){
 
     socket.emit('myClick', {event: Deck6PickedCard, id:id});
 }
-function playFromDeck7(){
-  var Deck7PickedCard = injeraCardDeck7filtered.pop()
-    // console.log("Picked Card is:",Deck7PickedCard)
 
-    var id = socket.io.engine.id 
 
-    socket.emit('myClick', {event: Deck7PickedCard, id:id});
-}
+function resetGame(){
+  // alert for user who reset 
+  alert("You Wanted to Start a new Game. The game will reset.")
+      
+  socket.emit('playHasReset', {reset: "The game has been reset.A new game has started" });
 
+      
+
+   }

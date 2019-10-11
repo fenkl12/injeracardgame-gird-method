@@ -24,10 +24,6 @@ io.on('connection',(socket) => {
     var user1 = users[0]
     var user2 = users[1]
 
-
-     
-
-        
     var users = Object.keys(io.engine.clients)
     // socket.emit('UserInfo', users);
 
@@ -44,7 +40,40 @@ io.on('connection',(socket) => {
 
     socket.on('myClick', function (data) {
       io.emit('myClick', data);
-      console.log(data);
+      // console.log(data);
+     //  io.emit broadcasts to all clients 
+     // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+ });
+
+ socket.on('deck1Click', function (data) {
+  io.emit('deck1Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
+socket.on('deck2Click', function (data) {
+  io.emit('deck2Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
+
+    socket.on('playHasReset', function (data) {
+      io.emit('playHasReset', data);
+
+    })
+    socket.on('dealtCardsArray', function ({injeraCardDeck1filtered: injeraCardDeck1filtered,
+      injeraCardDeck2filtered: injeraCardDeck2filtered,
+      injeraCardDeck3filtered: injeraCardDeck3filtered,
+      injeraCardDeck4filtered: injeraCardDeck4filtered,
+      injeraCardDeck5filtered: injeraCardDeck5filtered,
+      injeraCardDeck6filtered: injeraCardDeck6filtered}) {
+      io.emit('dealtCardsArray', {injeraCardDeck1filtered: injeraCardDeck1filtered,
+        injeraCardDeck2filtered: injeraCardDeck2filtered,
+        injeraCardDeck3filtered: injeraCardDeck3filtered,
+        injeraCardDeck4filtered: injeraCardDeck4filtered,
+        injeraCardDeck5filtered: injeraCardDeck5filtered,
+        injeraCardDeck6filtered: injeraCardDeck6filtered});
      //  io.emit broadcasts to all clients 
      // socket.broadcast.emit will send the message to all the other clients except the newly created connection
  });

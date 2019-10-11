@@ -18,7 +18,8 @@
     <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-5"onclick=" playFromDeck5()"></img></li>
     <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-6"onclick=" playFromDeck6()"></img></li>
 </ul> -->
-
+<button  id="resetGameBtn" onclick="resetGame()">Reset Game</button>
+<button  id="resetGameBtn" onclick="dealCards()">Start New Game</button>
 <div id="cards-to-pick">
 
   <div class ="playFromDeck" id="playFromDeck1">
@@ -51,17 +52,14 @@
     <img src="imgs/card_back_6.png" alt="Trulli"  id="deck-6"onclick=" playFromDeck6()"></img>
   </div>
 
-  <div class ="playFromDeck" id="playFromDeck7">
-    <img src="imgs/card_back_7.png" alt="Trulli"  id="deck-7"onclick=" playFromDeck7()"></img>
-  </div>
-
 </div>
 
-<button onclick="resetGame()"> Reset</button>
+
 <section>
 <!-- <div id="cards-middle-pile"></div> -->
 <h3>Your Cards</h3>
 <div id="user1-pile"></div>
+<div id="user1-card-count"></div>
 
 </section>
 
@@ -69,6 +67,7 @@
 <h3>Other Player Cards</h3>
 <section>
   <div id="user2-pile"></div>
+  <div id="user2-card-count"></div>
 
 </section>
 
