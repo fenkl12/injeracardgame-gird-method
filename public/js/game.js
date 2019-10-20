@@ -150,8 +150,9 @@ const user2 = new User();
 function checkAndMovetoPiles(DeckXPickedCardObject) {
  
   var playerId =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[1]]);
-  console.log(playerId);
-  
+  // console.log(playerId);
+  //  console.log("matchedCards = ", matchedCards);
+  //  console.log("nonMatchPile = ", nonMatchPile);
 
   
 
@@ -173,6 +174,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
         
         // console.log("We have a match")
         matchedCards.push(nonMatchPile[i],DeckXPickedCard)
+        // console.log(matchedCards);
         
         // console.log(nonMatchPile[i],DeckXPickedCard);
         
@@ -361,48 +363,62 @@ function playFromDeck2(){
   socket.emit('deck2Click', {id:id});
 }
 
-// function playFromDeck2(){
-//     var Deck2PickedCard = injeraCardDeck2filtered.pop()
-//     // console.log("Picked Card is:",Deck2PickedCard)
-
-//     var id = socket.io.engine.id 
-
-//     socket.emit('myClick', {event: Deck2PickedCard, id:id});
-// }
-
 function playFromDeck3(){
-  var Deck3PickedCard = injeraCardDeck3filtered.pop()
-    // console.log("Picked Card is:",Deck3PickedCard)
 
-    var id = socket.io.engine.id 
-
-    socket.emit('myClick', {event: Deck3PickedCard, id:id});
+  var id = socket.io.engine.id 
+  socket.emit('deck3Click', {id:id});
 }
-function playFromDeck4(){
-  var Deck4PickedCard = injeraCardDeck4filtered.pop()
-    // console.log("Picked Card is:",Deck4PickedCard)
- 
-    var id = socket.io.engine.id 
 
-    socket.emit('myClick', {event: Deck4PickedCard, id:id});
+function playFromDeck4(){
+
+  var id = socket.io.engine.id 
+  socket.emit('deck4Click', {id:id});
 }
 function playFromDeck5(){
-  var Deck5PickedCard = injeraCardDeck5filtered.pop()
-    // console.log("Picked Card is:",Deck5PickedCard)
 
-    var id = socket.io.engine.id 
-
-    socket.emit('myClick', {event: Deck5PickedCard, id:id}); 
+  var id = socket.io.engine.id 
+  socket.emit('deck5Click', {id:id});
 }
 
 function playFromDeck6(){
-  var Deck6PickedCard = injeraCardDeck6filtered.pop()
-    // console.log("Picked Card is:",Deck6PickedCard)
 
-    var id = socket.io.engine.id 
-
-    socket.emit('myClick', {event: Deck6PickedCard, id:id});
+  var id = socket.io.engine.id 
+  socket.emit('deck6Click', {id:id});
 }
+
+// function playFromDeck3(){
+//   var Deck3PickedCard = injeraCardDeck3filtered.pop()
+//     // console.log("Picked Card is:",Deck3PickedCard)
+
+//     var id = socket.io.engine.id 
+
+//     socket.emit('myClick', {event: Deck3PickedCard, id:id});
+// }
+// function playFromDeck4(){
+//   var Deck4PickedCard = injeraCardDeck4filtered.pop()
+//     // console.log("Picked Card is:",Deck4PickedCard)
+ 
+//     var id = socket.io.engine.id 
+
+//     socket.emit('myClick', {event: Deck4PickedCard, id:id});
+// }
+// function playFromDeck5(){
+//   var Deck5PickedCard = injeraCardDeck5filtered.pop()
+//     // console.log("Picked Card is:",Deck5PickedCard)
+
+//     var id = socket.io.engine.id 
+
+//     socket.emit('myClick', {event: Deck5PickedCard, id:id}); 
+// }
+
+// function playFromDeck6(){
+//   var Deck6PickedCard = injeraCardDeck6filtered.pop()
+//     // console.log("Picked Card is:",Deck6PickedCard)
+
+//     var id = socket.io.engine.id 
+
+//     socket.emit('myClick', {event: Deck6PickedCard, id:id});
+// }
 
 
 function resetGame(){

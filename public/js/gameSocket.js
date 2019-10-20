@@ -31,7 +31,7 @@ socket.on('myClick', function (data) {
       
       // console.log(data);
       checkAndMovetoPiles(data)
-      console.log(data-1);
+      // console.log(data);
       // if (injeraCardDeck1filtered.length <= 0){
       //     document.getElementById("deck-1").src = "imgs/blank.png"
       //     document.getElementById("deck-1").onclick = " "
@@ -58,7 +58,7 @@ socket.on('dealtCardsArray', (data) =>{
       //       injeraCardDeck5filtered: injeraCardDeck5filtered,
       //       injeraCardDeck6filtered: injeraCardDeck6filtered});
       unifiedCardDeck.push(data)  
-      // console.log(data);
+      console.log(data);
 //     socket.emit('deck1Click', {data: data});
    
 })
@@ -67,6 +67,7 @@ socket.on('dealtCardsArray', (data) =>{
 socket.on('deck1Click', (data) =>{
       // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
       var Deck1PickedCard = unifiedCardDeck[0].injeraCardDeck1filtered.pop()
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
       socket.emit('myClick', {event: Deck1PickedCard, id:data.id});
    
 })
@@ -74,6 +75,45 @@ socket.on('deck1Click', (data) =>{
 socket.on('deck2Click', (data) =>{
       // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
       var Deck2PickedCard = unifiedCardDeck[0].injeraCardDeck2filtered.pop()
+      // console.log(unifiedCardDeck[0].injeraCardDeck2filtered);
       socket.emit('myClick', {event: Deck2PickedCard, id:data.id});
+   
+})
+
+socket.on('deck3Click', (data) =>{
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
+      var Deck3PickedCard = unifiedCardDeck[0].injeraCardDeck3filtered.pop()
+      socket.emit('myClick', {event: Deck3PickedCard, id:data.id});
+   
+})
+
+
+socket.on('deck4Click', (data) =>{
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
+      var Deck4PickedCard = unifiedCardDeck[0].injeraCardDeck4filtered.pop()
+      socket.emit('myClick', {event: Deck4PickedCard, id:data.id});
+   
+})
+
+
+socket.on('deck4Click', (data) =>{
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
+      var Deck4PickedCard = unifiedCardDeck[0].injeraCardDeck4filtered.pop()
+      socket.emit('myClick', {event: Deck4PickedCard, id:data.id});
+   
+})
+
+
+socket.on('deck5Click', (data) =>{
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
+      var Deck5PickedCard = unifiedCardDeck[0].injeraCardDeck5filtered.pop()
+      socket.emit('myClick', {event: Deck5PickedCard, id:data.id});
+   
+})
+
+socket.on('deck6Click', (data) =>{
+      // console.log(unifiedCardDeck[0].injeraCardDeck1filtered);
+      var Deck6PickedCard = unifiedCardDeck[0].injeraCardDeck6filtered.pop()
+      socket.emit('myClick', {event: Deck6PickedCard, id:data.id});
    
 })

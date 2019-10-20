@@ -39,7 +39,8 @@ io.on('connection',(socket) => {
 
 
     socket.on('myClick', function (data) {
-      io.emit('myClick', data);
+      // only emit to other clients, if io.emit sending to other user and self again. 
+      socket.emit('myClick', data);
       // console.log(data);
      //  io.emit broadcasts to all clients 
      // socket.broadcast.emit will send the message to all the other clients except the newly created connection
@@ -57,7 +58,30 @@ socket.on('deck2Click', function (data) {
  //  io.emit broadcasts to all clients 
  // socket.broadcast.emit will send the message to all the other clients except the newly created connection
 }); 
-
+socket.on('deck3Click', function (data) {
+  io.emit('deck3Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
+socket.on('deck4Click', function (data) {
+  io.emit('deck4Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
+socket.on('deck5Click', function (data) {
+  io.emit('deck5Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
+socket.on('deck6Click', function (data) {
+  io.emit('deck6Click', data);
+  // console.log(data);
+ //  io.emit broadcasts to all clients 
+ // socket.broadcast.emit will send the message to all the other clients except the newly created connection
+}); 
     socket.on('playHasReset', function (data) {
       io.emit('playHasReset', data);
 
