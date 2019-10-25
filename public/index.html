@@ -2,6 +2,7 @@
 <html>
 
   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/game.js"></script>
@@ -19,7 +20,8 @@
     <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-6"onclick=" playFromDeck6()"></img></li>
 </ul> -->
 <button  id="resetGameBtn" onclick="resetGame()">Reset Game</button>
-<button  id="resetGameBtn" onclick="dealCards()">Start New Game</button>
+<button  id="resetGameBtn" onclick="dealCards()">Deal Cards</button>
+<div id="overlay" onclick="overlayOn()">Wait For Your Turn</div>
 <div id="cards-to-pick">
 
   <div class ="playFromDeck" id="playFromDeck1">

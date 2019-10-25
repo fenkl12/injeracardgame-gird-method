@@ -38,9 +38,9 @@ io.on('connection',(socket) => {
     }
 
 
-    socket.on('myClick', function (data) {
+socket.on('myClick', function (data) {
       // only emit to other clients, if io.emit sending to other user and self again. 
-      socket.emit('myClick', data);
+   socket.emit('myClick', data);
       // console.log(data);
      //  io.emit broadcasts to all clients 
      // socket.broadcast.emit will send the message to all the other clients except the newly created connection
@@ -82,7 +82,7 @@ socket.on('deck6Click', function (data) {
  //  io.emit broadcasts to all clients 
  // socket.broadcast.emit will send the message to all the other clients except the newly created connection
 }); 
-    socket.on('playHasReset', function (data) {
+socket.on('playHasReset', function (data) {
       io.emit('playHasReset', data);
 
     })
@@ -101,6 +101,13 @@ socket.on('deck6Click', function (data) {
      //  io.emit broadcasts to all clients 
      // socket.broadcast.emit will send the message to all the other clients except the newly created connection
  });
+
+socket.on('yourTurnSocket', function (data) {
+
+  socket.broadcast.emit('yourTurnSocketAcceptance', data);
+  //  console.log("socket emitted");
+});
+
   
 }) 
 server.listen(port ,()=> {console.log(`Server is up on ${port}`)})

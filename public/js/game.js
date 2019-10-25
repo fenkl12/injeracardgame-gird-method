@@ -135,10 +135,10 @@ socket.emit('dealtCardsArray', {injeraCardDeck1filtered: injeraCardDeck1filtered
 
 
 
-function resetGame(){
-    location.reload()
- 
-}
+// function resetGame(){
+//     location.reload()
+    
+// }
 
 var nonMatchPile = []
 var matchedCards = []
@@ -158,7 +158,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
 
   // get first value pair and get stiring of value 
   var DeckXPickedCard =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[0]]);
-  console.log(DeckXPickedCard);
+  // console.log(DeckXPickedCard);
 
   var valueToCheck = DeckXPickedCard.split(" ")[0]
     // console.log("Card to check is",valueToCheck);
@@ -279,7 +279,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
         
         // console.log(user2.userName());
         // console.log(playerId);
-        console.log("Other Player picked matching cards");
+        // console.log("Other Player picked matching cards");
  
         // remove all elements from the user2 pile div
        // This was done becsuse when running throught for loop,
@@ -314,6 +314,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       // empty matchedCards array 
         matchedCards = []
       })
+      
     .catch(function (e){
       console.log(e);
     })
@@ -322,68 +323,53 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
 }
 
 
-
-
-// socket.on('deck1Click', function (data) {
-//     console.log(data.data.pop());
-//    var Deck1PickedCard = data.data.pop()
-//    var id = socket.io.engine.id 
-
-//   socket.emit('myClick', {event: Deck1PickedCard, id:id});
-
-// })
-
-
-// get full card deck from gameSocket and push to array
-// socket.on('deck1Click', function (data) {
-//   unifiedCardDeck.push(data.data)
-// })
-
-
-// function playFromDeck1(){
-//   console.log(unifiedCardDeck);  
-//   // // var Deck1PickedCard = injeraCardDeck1filtered.pop()
-//   // // // console.log("Picked Card is:",Deck2PickedCard)
-
-//   // // var id = socket.io.engine.id 
-
-//   // socket.emit('myClick', {event: Deck1PickedCard, id:id});
-// }
-
-// working____________________________________________________________________________ now need to fix two cards match on checkAndMovetoPiles
 function playFromDeck1(){
 
   var id = socket.io.engine.id 
   socket.emit('deck1Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
+  overlayOn()
 }
 
 function playFromDeck2(){
 
   var id = socket.io.engine.id 
   socket.emit('deck2Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
 }
 
 function playFromDeck3(){
 
   var id = socket.io.engine.id 
   socket.emit('deck3Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
 }
 
 function playFromDeck4(){
 
   var id = socket.io.engine.id 
   socket.emit('deck4Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
 }
 function playFromDeck5(){
 
   var id = socket.io.engine.id 
   socket.emit('deck5Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
 }
 
 function playFromDeck6(){
 
   var id = socket.io.engine.id 
   socket.emit('deck6Click', {id:id});
+  socket.emit('yourTurnSocket', {event:id}); 
+  notYourTurn()
+
 }
 
 // function playFromDeck3(){
@@ -394,39 +380,149 @@ function playFromDeck6(){
 
 //     socket.emit('myClick', {event: Deck3PickedCard, id:id});
 // }
-// function playFromDeck4(){
-//   var Deck4PickedCard = injeraCardDeck4filtered.pop()
-//     // console.log("Picked Card is:",Deck4PickedCard)
- 
-//     var id = socket.io.engine.id 
-
-//     socket.emit('myClick', {event: Deck4PickedCard, id:id});
-// }
-// function playFromDeck5(){
-//   var Deck5PickedCard = injeraCardDeck5filtered.pop()
-//     // console.log("Picked Card is:",Deck5PickedCard)
-
-//     var id = socket.io.engine.id 
-
-//     socket.emit('myClick', {event: Deck5PickedCard, id:id}); 
-// }
-
-// function playFromDeck6(){
-//   var Deck6PickedCard = injeraCardDeck6filtered.pop()
-//     // console.log("Picked Card is:",Deck6PickedCard)
-
-//     var id = socket.io.engine.id 
-
-//     socket.emit('myClick', {event: Deck6PickedCard, id:id});
-// }
-
 
 function resetGame(){
   // alert for user who reset 
   alert("You Wanted to Start a new Game. The game will reset.")
       
   socket.emit('playHasReset', {reset: "The game has been reset.A new game has started" });
-
-      
-
    }
+
+
+
+function notYourTurn(){
+
+var deckIds = ["deck-1","deck-2","deck-3","deck-4","deck-5","deck-6"]
+
+if (unifiedCardDeck[0].injeraCardDeck1filtered.length <= 0){
+  document.getElementById("deck-1").src = "imgs/blank.png"
+  document.getElementById("deck-1").onclick = " "
+
+}else {
+document.getElementById("deck-1").src = "imgs/card_back.png"
+document.getElementById("deck-1").onclick = " "
+overlayOn()
+
+}
+if (unifiedCardDeck[0].injeraCardDeck2filtered.length <= 0){
+document.getElementById("deck-2").src = "imgs/blank.png"
+document.getElementById("deck-2").onclick = " "
+
+}else {
+document.getElementById("deck-2").src = "imgs/card_back.png"
+document.getElementById("deck-2").onclick = " "
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck3filtered.length <= 0){
+document.getElementById("deck-3").src = "imgs/blank.png"
+document.getElementById("deck-3").onclick = " "
+
+}else {
+document.getElementById("deck-3").src = "imgs/card_back.png"
+document.getElementById("deck-3").onclick = " "
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck4filtered.length <= 0){
+document.getElementById("deck-4").src = "imgs/blank.png"
+document.getElementById("deck-4").onclick = " "
+
+}else {
+document.getElementById("deck-4").src = "imgs/card_back.png"
+document.getElementById("deck-4").onclick = " "
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck5filtered.length <= 0){
+document.getElementById("deck-5").src = "imgs/blank.png"
+document.getElementById("deck-5").onclick = " "
+
+}else {
+document.getElementById("deck-5").src = "imgs/card_back.png"
+document.getElementById("deck-5").onclick = " "
+
+}
+if (unifiedCardDeck[0].injeraCardDeck6filtered.length <= 0){
+document.getElementById("deck-6").src = "imgs/blank.png"
+document.getElementById("deck-6").onclick = " "
+
+}else {
+document.getElementById("deck-6").src = "imgs/card_back.png"
+document.getElementById("deck-6").onclick = " "
+
+}
+}
+
+function yourTurn(){
+  
+if (unifiedCardDeck[0].injeraCardDeck1filtered.length <= 0){
+    document.getElementById("deck-1").src = "imgs/blank.png"
+    document.getElementById("deck-1").onclick = " "
+
+}else {
+  document.getElementById("deck-1").src = "imgs/card_back_1.png"
+  document.getElementById("deck-1").onclick = playFromDeck1
+
+}
+if (unifiedCardDeck[0].injeraCardDeck2filtered.length <= 0){
+  document.getElementById("deck-2").src = "imgs/blank.png"
+  document.getElementById("deck-2").onclick = " "
+
+}else {
+document.getElementById("deck-2").src = "imgs/card_back_2.png"
+document.getElementById("deck-2").onclick = playFromDeck2
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck3filtered.length <= 0){
+  document.getElementById("deck-3").src = "imgs/blank.png"
+  document.getElementById("deck-3").onclick = " "
+
+}else {
+document.getElementById("deck-3").src = "imgs/card_back_3.png"
+document.getElementById("deck-3").onclick = playFromDeck3
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck4filtered.length <= 0){
+  document.getElementById("deck-4").src = "imgs/blank.png"
+  document.getElementById("deck-4").onclick = " "
+
+}else {
+document.getElementById("deck-4").src = "imgs/card_back_4.png"
+document.getElementById("deck-4").onclick = playFromDeck4
+
+}
+
+if (unifiedCardDeck[0].injeraCardDeck5filtered.length <= 0){
+  document.getElementById("deck-5").src = "imgs/blank.png"
+  document.getElementById("deck-5").onclick = " "
+
+}else {
+document.getElementById("deck-5").src = "imgs/card_back_5.png"
+document.getElementById("deck-5").onclick = playFromDeck5
+
+}
+if (unifiedCardDeck[0].injeraCardDeck6filtered.length <= 0){
+  document.getElementById("deck-6").src = "imgs/blank.png"
+  document.getElementById("deck-6").onclick = " "
+
+}else {
+document.getElementById("deck-6").src = "imgs/card_back_6.png"
+document.getElementById("deck-6").onclick = playFromDeck6
+
+}
+
+
+
+
+}
+
+function overlayOn() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function overlayOff() {
+  document.getElementById("overlay").style.display = "none";
+}
