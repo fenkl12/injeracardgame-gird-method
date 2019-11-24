@@ -80,6 +80,7 @@ class Deck{
 
 function dealCards() {
   console.log("dealCards clicked");
+  document.getElementById("dealCardsBtn").onclick = " "
 const deck1 = new Deck();
 
 
@@ -189,8 +190,9 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
 
     nonMatchPile.push(DeckXPickedCard)
     }
-    
+
     name()
+
     .then(function (i){
 
       // match and remove item
@@ -258,6 +260,7 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
      // double because cards pairs are list as 1 
       document.getElementById('user1-card-count').innerText = ("You Have "+ cardCount*2 + " Cards")
 
+
      const createUser1PileDiv = document.createElement('div')
      createUser1PileDiv.className = "user-1-pile"
      createUser1PileDiv.innerHTML = `<img src="imgs/PNG/${user1.userCards[i][b]}.png" alt="Trulli"></img>`;
@@ -296,7 +299,8 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
           for (var b = 0; b < user2.userCards[i].length; b++){
             var cardCount  = user2.userCards.length
             // double because cards pairs are list as 1 
-            document.getElementById('user2-card-count').innerText = ("You oponent has "+ cardCount*2 + " Cards")
+            document.getElementById('user2-card-count').innerText = ("Your oponent has "+ cardCount*2 + " Cards")
+            
     
          const createUser1PileDiv = document.createElement('div')
          createUser1PileDiv.className = "user-2-pile"
@@ -313,6 +317,19 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
     .then(function(){
       // empty matchedCards array 
         matchedCards = []
+        var user1cardCount  = user2.userCards.length
+        console.log(user1cardCount);
+        var user2cardCount  = user2.userCards.length
+        if (user1cardCount*2 > 27){
+          
+          winner()
+        }
+
+        if (user2cardCount*2 > 27){
+          winner()
+          // alert("We have a winner. User with 28 Cards has Won")
+        }
+        
       })
       
     .catch(function (e){
@@ -338,6 +355,7 @@ function playFromDeck2(){
   socket.emit('deck2Click', {id:id});
   socket.emit('yourTurnSocket', {event:id}); 
   notYourTurn()
+  overlayOn()
 }
 
 function playFromDeck3(){
@@ -346,6 +364,7 @@ function playFromDeck3(){
   socket.emit('deck3Click', {id:id});
   socket.emit('yourTurnSocket', {event:id}); 
   notYourTurn()
+  overlayOn()
 }
 
 function playFromDeck4(){
@@ -354,6 +373,7 @@ function playFromDeck4(){
   socket.emit('deck4Click', {id:id});
   socket.emit('yourTurnSocket', {event:id}); 
   notYourTurn()
+  overlayOn()
 }
 function playFromDeck5(){
 
@@ -361,6 +381,7 @@ function playFromDeck5(){
   socket.emit('deck5Click', {id:id});
   socket.emit('yourTurnSocket', {event:id}); 
   notYourTurn()
+  overlayOn()
 }
 
 function playFromDeck6(){
@@ -369,6 +390,7 @@ function playFromDeck6(){
   socket.emit('deck6Click', {id:id});
   socket.emit('yourTurnSocket', {event:id}); 
   notYourTurn()
+  overlayOn()
 
 }
 
@@ -386,7 +408,7 @@ function resetGame(){
   alert("You Wanted to Start a new Game. The game will reset.")
       
   socket.emit('playHasReset', {reset: "The game has been reset.A new game has started" });
-   }
+ }
 
 
 
@@ -401,7 +423,7 @@ if (unifiedCardDeck[0].injeraCardDeck1filtered.length <= 0){
 }else {
 document.getElementById("deck-1").src = "imgs/card_back.png"
 document.getElementById("deck-1").onclick = " "
-overlayOn()
+
 
 }
 if (unifiedCardDeck[0].injeraCardDeck2filtered.length <= 0){
@@ -514,9 +536,6 @@ document.getElementById("deck-6").onclick = playFromDeck6
 
 }
 
-
-
-
 }
 
 function overlayOn() {
@@ -526,3 +545,23 @@ function overlayOn() {
 function overlayOff() {
   document.getElementById("overlay").style.display = "none";
 }
+
+
+function winner(){
+
+  socket.emit('winnerAccouncment', {winner: "We have a winner. User with 28 Cards has Won" });
+}
+
+function dealCardsNotice(){
+  alert("Make sure to click 'Deal Cards' Button")
+  // resetGame()
+  // socket.emit('playHasReset', {reset: "The game has been reset.A new game has started" });
+
+}
+
+// function refreshBtnClicked(){
+//   // alert for user who reset 
+//   alert("Player refreshed the game. Make sure the game was reset Click on the Reset Game Btn.")
+      
+//  }
+

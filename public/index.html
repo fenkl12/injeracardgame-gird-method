@@ -7,8 +7,17 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/game.js"></script>
     <script src="js/gameSocket.js"></script>
+
+    <script>
+
+    </script>
   </head>
 <body>
+
+  <!-- does not work, provides two sets of cards -->
+<body onload="dealCardsNotice()">
+
+
 
 <h2>HTML Image</h2>
 <!-- <ul class='circle-container'>
@@ -19,8 +28,8 @@
     <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-5"onclick=" playFromDeck5()"></img></li>
     <li><img src="card_back.png" alt="Trulli" width="250" height="333" id="deck-6"onclick=" playFromDeck6()"></img></li>
 </ul> -->
-<button  id="resetGameBtn" onclick="resetGame()">Reset Game</button>
-<button  id="resetGameBtn" onclick="dealCards()">Deal Cards</button>
+<button  id="resetGameBtn" onclick="resetGame()">Reset/New Game</button>
+<button  id="dealCardsBtn" onclick="dealCards()">Deal Cards</button>
 <div id="overlay" onclick="overlayOn()">Wait For Your Turn</div>
 <div id="cards-to-pick">
 

@@ -9,6 +9,12 @@ body {
     font-size: 100px;
     margin: 1%;
 }
+
+
+#dealCardsBtn{
+    font-size: 100px;
+    margin: 1%;
+}
 #cards-to-pick{
 
     background-color: green;
@@ -114,6 +120,14 @@ body {
     
 }
 
+#user2-pile img{
+ 
+    /* height does not seem to matter */
+    /* height: 50%; */
+    width: 10%;
+    
+}
+
 .user-1-pile{
     display: inline;
 
@@ -127,7 +141,6 @@ body {
 
 .user-2-pile{
     display: inline;
-    background: blue;
 
 }
 #user-2-pile img{

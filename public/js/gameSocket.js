@@ -157,3 +157,8 @@ socket.on('yourTurnSocketAcceptance', (data) =>{
       yourTurn()
       overlayOff()
 })
+
+socket.on('winnerAccouncment', (data) =>{
+      alert(data.winner)
+     
+})

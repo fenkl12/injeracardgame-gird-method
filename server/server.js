@@ -108,6 +108,12 @@ socket.on('yourTurnSocket', function (data) {
   //  console.log("socket emitted");
 });
 
+socket.on('winnerAccouncment', function (data) {
+
+  io.emit('winnerAccouncment', data);
+
+});
+
   
 }) 
 server.listen(port ,()=> {console.log(`Server is up on ${port}`)})
