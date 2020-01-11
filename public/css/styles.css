@@ -5,7 +5,8 @@ body {
 
 }
 h2{
-    font-size: 60%;
+    font-size: 80%;
+    text-align: center;
 }
 #resetGameBtn{
     font-size: 30%;
@@ -23,8 +24,8 @@ h2{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: 20% 60% 20%;
-    height: 90%;
-    
+    height: 150%;
+    width: 100%;
 
 }
 
@@ -169,6 +170,7 @@ h2{
  /* overlay  ________________________________________________________ */
  #overlay {
     position: fixed;
+    
     text-align: center;
     color: yellow;
 
@@ -182,4 +184,5 @@ h2{
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
     cursor: pointer;
+    font-size: 100%;
   }
