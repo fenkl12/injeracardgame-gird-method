@@ -4,15 +4,17 @@ body {
     font-size: 100px;
 
 }
-
+h2{
+    font-size: 60%;
+}
 #resetGameBtn{
-    font-size: 100px;
+    font-size: 30%;
     margin: 1%;
 }
 
 
 #dealCardsBtn{
-    font-size: 100px;
+    font-size: 30%;
     margin: 1%;
 }
 #cards-to-pick{
@@ -152,10 +154,17 @@ body {
 
  h3 {
     color:red;
-    
-
+    font-size: 50px;
+ }
+ #user2-card-count{
+    font-size: 40px;
+    color:blue;
  }
 
+#user1-card-count{
+   font-size: 40px;
+   color:blue;
+}
 
  /* overlay  ________________________________________________________ */
  #overlay {

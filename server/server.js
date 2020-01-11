@@ -12,14 +12,21 @@ var io = socketIO(server)
 app.use(express.static(publicPath))
 
 io.on('connection',(socket) => {
+
+    // room creation 
+    socket.on('create', function(room) {
+    socket.join(room);
+    });
   
     console.log("New user connected");
+
 
     ID = socket.id;
 
     console.log('client id - '+ socket.id);   
 
     var users = Object.keys(io.engine.clients)
+    console.log(users);
     
     var user1 = users[0]
     var user2 = users[1]
@@ -30,13 +37,12 @@ io.on('connection',(socket) => {
     // limit user connections  
     var connectionsLimit = 2
     if (io.engine.clientsCount > connectionsLimit) {
-      socket.emit('err', { message: 'reached the limit of connections' })
+      socket.emit('err', { message: 'You will be disconnected. We have reached the limit of players' })
       socket.disconnect()
  
       console.log('Disconnected...')
       return
     }
-
 
 socket.on('myClick', function (data) {
       // only emit to other clients, if io.emit sending to other user and self again. 

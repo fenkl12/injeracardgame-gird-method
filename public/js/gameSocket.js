@@ -1,18 +1,17 @@
-var socket = io()
+
+var socket = io.connect();
+socket.emit('create', 'room1');
 
 socket.on('err', (data) =>{
       alert(data.message)
       console.log(data.message);
-      
+    
 })
 
 
 socket.on('connect', () =>{
       // console.log("Connected to server");
-
-
-      
-      
+  
 })
 
 socket.on('disconnect', () =>{
@@ -90,6 +89,7 @@ socket.on('deck3Click', (data) =>{
     
         }
       socket.emit('myClick', {event: Deck3PickedCard, id:data.id});
+
    
 })
 
@@ -102,20 +102,9 @@ socket.on('deck4Click', (data) =>{
             document.getElementById("deck-4").onclick = " "
             }
       socket.emit('myClick', {event: Deck4PickedCard, id:data.id});
+
    })
 
-
-socket.on('deck4Click', (data) =>{
-
-      var Deck4PickedCard = unifiedCardDeck[0].injeraCardDeck4filtered.pop()
-      if (unifiedCardDeck[0].injeraCardDeck4filtered.length <= 0){
-            document.getElementById("deck-4").src = "imgs/blank.png"
-            document.getElementById("deck-4").onclick = " "
-    
-        }
-      socket.emit('myClick', {event: Deck4PickedCard, id:data.id});
-   
-})
 
 
 socket.on('deck5Click', (data) =>{
