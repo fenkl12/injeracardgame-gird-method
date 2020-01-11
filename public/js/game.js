@@ -10,25 +10,13 @@ class User{
   }
   
   userName(){
-    // var id = socket.io.engine.id 
-    // return id
-
   }
-
-
-  // mycards(cards){
-  //   var mycardsArray = []
-  //   mycardsArray.push.apply(mycardsArray,cards)
-  //   return mycardsArray
-  // }
 
   push(cards) { 
  
     this.userCards[this.length] = cards; 
-   
     this.length++; 
     return this.userCards
-
 } 
 }
 
@@ -71,9 +59,6 @@ class Deck{
       return this.deck.pop();
     }
     play(){
-// may put all data into the play function 
-
-      
     }
   }
  
@@ -83,14 +68,6 @@ function dealCards() {
   document.getElementById("dealCardsBtn").onclick = " "
 const deck1 = new Deck();
 
-
-
-// const player1 = new User();
-// const player2 = new User();
-//   console.log(deck1.deck);
-//   deck1.reset();
-  
-//   console.log(deck1.deck);
 var injeraCardDeck1 = []
 var injeraCardDeck2 = []
 var injeraCardDeck3 = []
@@ -98,12 +75,8 @@ var injeraCardDeck4 = []
 var injeraCardDeck5 = []
 var injeraCardDeck6 = []
 
-
-// view full deck
-// console.log(deck1.deck);
 for ( var i = 0; i < deck1.deck.length;){
 
-    // console.log(i);
     injeraCardDeck1.push(deck1.deal())
     injeraCardDeck2.push(deck1.deal())
     injeraCardDeck3.push(deck1.deal())
@@ -132,15 +105,6 @@ socket.emit('dealtCardsArray', {injeraCardDeck1filtered: injeraCardDeck1filtered
     
 }
 
-
-
-
-
-// function resetGame(){
-//     location.reload()
-    
-// }
-
 var nonMatchPile = []
 var matchedCards = []
 
@@ -151,37 +115,21 @@ const user2 = new User();
 function checkAndMovetoPiles(DeckXPickedCardObject) {
  
   var playerId =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[1]]);
-  // console.log(playerId);
-  //  console.log("matchedCards = ", matchedCards);
-  //  console.log("nonMatchPile = ", nonMatchPile);
 
-  
 
   // get first value pair and get stiring of value 
   var DeckXPickedCard =  (DeckXPickedCardObject[Object.keys(DeckXPickedCardObject)[0]]);
-  // console.log(DeckXPickedCard);
+
 
   var valueToCheck = DeckXPickedCard.split(" ")[0]
-    // console.log("Card to check is",valueToCheck);
 
   var name = async () => {
     
     for (var i = 0; i < nonMatchPile.length; i++){
 
-      // console.log("Check for match between ",nonMatchPile[i][0],valueToCheck[0] );
       
        if ((nonMatchPile[i][0]) == valueToCheck[0] ){
-        
-        
-        // console.log("We have a match")
         matchedCards.push(nonMatchPile[i],DeckXPickedCard)
-        // console.log(matchedCards);
-        
-        // console.log(nonMatchPile[i],DeckXPickedCard);
-        
-
-        // console.log("The Values of i is ",i);
-        
         return i
        }
     }
@@ -201,12 +149,8 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
             nonMatchPile.splice(index, 1);
             }
      
-        // console.log("i is ",i);
       })
     .then(function(){
-      // console.log("Matched Cards = ",matchedCards);
-      // console.log("Pile = ",nonMatchPile);  
-
       // remove all elements from the cards middle pile div
       // This was done becasuse when running throught for loop, the count would add to the already displayed cards
       var cardsMiddlePileDiv = document.getElementById('middle-pile')
@@ -216,7 +160,6 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
 
       // display cards in the middle by appending child element to cards middle pile div
       for (var i = 0; i < nonMatchPile.length; i++){
-      //  console.log(nonMatchPile[i]);
        const createCardsMiddlePileDiv = document.createElement('div')
        createCardsMiddlePileDiv.className = "middle-pile-cards"
        createCardsMiddlePileDiv.innerHTML = `<img src="imgs/PNG/${nonMatchPile[i]}.png" alt="Trulli"></img>`;
@@ -232,32 +175,19 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       var id = socket.io.engine.id 
       if (id == playerId ){
 
-
-      // if matched cards is not empty push to user 1
         if (matchedCards.length !== 0 ){
           user1.push(matchedCards)
         }
-        
-        // console.log(id);
-        // console.log(playerId);
-              // move matched card to user 1 pile 
-      
- 
-      // remove all elements from the user1 pile div
-     // This was done becasuse when running throught for loop,
-     //  the count would add to the already displayed cards
+
      var user1PileDiv = document.getElementById('user1-pile')
      while (user1PileDiv.firstChild) {
        user1PileDiv.removeChild(user1PileDiv.firstChild);
        }
 
-     
-     // diplay user1 cards 
-     // console.log("User 1 number of cards",user1.mycards(matchedCards).length);
      for (var i = 0; i < user1.userCards.length; i++){
       for (var b = 0; b < user1.userCards[i].length; b++){
      var cardCount  = user1.userCards.length
-     // double because cards pairs are list as 1 
+
       document.getElementById('user1-card-count').innerText = ("You Have "+ cardCount*2 + " Cards")
 
 
@@ -278,12 +208,6 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       if (matchedCards.length !== 0 ){
           user2.push(matchedCards)
         }
-              
-        
-        // console.log(user2.userName());
-        // console.log(playerId);
-        // console.log("Other Player picked matching cards");
- 
         // remove all elements from the user2 pile div
        // This was done becsuse when running throught for loop,
        //  the count would add to the already displayed cards
@@ -294,7 +218,6 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
   
        
        // diplay user2 cards 
-        // console.log("User 2 number of cards",user2.mycards(matchedCards).length);
         for (var i = 0; i < user2.userCards.length; i++){
           for (var b = 0; b < user2.userCards[i].length; b++){
             var cardCount  = user2.userCards.length
@@ -318,25 +241,22 @@ function checkAndMovetoPiles(DeckXPickedCardObject) {
       // empty matchedCards array 
         matchedCards = []
         var user1cardCount  = user2.userCards.length
-        console.log(user1cardCount);
         var user2cardCount  = user2.userCards.length
         if (user1cardCount*2 > 27){
-          
-          winner()
+         winner()
         }
 
         if (user2cardCount*2 > 27){
           winner()
           // alert("We have a winner. User with 28 Cards has Won")
         }
-        
+
       })
       
     .catch(function (e){
       console.log(e);
     })
-    
-  //  console.log(injeraCardDeck1filtered);    
+
 }
 
 
@@ -393,15 +313,6 @@ function playFromDeck6(){
   overlayOn()
 
 }
-
-// function playFromDeck3(){
-//   var Deck3PickedCard = injeraCardDeck3filtered.pop()
-//     // console.log("Picked Card is:",Deck3PickedCard)
-
-//     var id = socket.io.engine.id 
-
-//     socket.emit('myClick', {event: Deck3PickedCard, id:id});
-// }
 
 function resetGame(){
   // alert for user who reset 
@@ -554,14 +465,5 @@ function winner(){
 
 function dealCardsNotice(){
   alert("Make sure to click 'Deal Cards' Button")
-  // resetGame()
-  // socket.emit('playHasReset', {reset: "The game has been reset.A new game has started" });
 
 }
-
-// function refreshBtnClicked(){
-//   // alert for user who reset 
-//   alert("Player refreshed the game. Make sure the game was reset Click on the Reset Game Btn.")
-      
-//  }
-
