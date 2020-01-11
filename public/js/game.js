@@ -332,7 +332,7 @@ if (unifiedCardDeck[0].injeraCardDeck1filtered.length <= 0){
   document.getElementById("deck-1").onclick = " "
 
 }else {
-document.getElementById("deck-1").src = "imgs/card_back.png"
+document.getElementById("deck-1").src = "imgs/card_back1.png"
 document.getElementById("deck-1").onclick = " "
 
 
@@ -342,7 +342,7 @@ document.getElementById("deck-2").src = "imgs/blank.png"
 document.getElementById("deck-2").onclick = " "
 
 }else {
-document.getElementById("deck-2").src = "imgs/card_back.png"
+document.getElementById("deck-2").src = "imgs/card_back1.png"
 document.getElementById("deck-2").onclick = " "
 
 }
@@ -352,7 +352,7 @@ document.getElementById("deck-3").src = "imgs/blank.png"
 document.getElementById("deck-3").onclick = " "
 
 }else {
-document.getElementById("deck-3").src = "imgs/card_back.png"
+document.getElementById("deck-3").src = "imgs/card_back1.png"
 document.getElementById("deck-3").onclick = " "
 
 }
@@ -362,7 +362,7 @@ document.getElementById("deck-4").src = "imgs/blank.png"
 document.getElementById("deck-4").onclick = " "
 
 }else {
-document.getElementById("deck-4").src = "imgs/card_back.png"
+document.getElementById("deck-4").src = "imgs/card_back1.png"
 document.getElementById("deck-4").onclick = " "
 
 }
@@ -372,7 +372,7 @@ document.getElementById("deck-5").src = "imgs/blank.png"
 document.getElementById("deck-5").onclick = " "
 
 }else {
-document.getElementById("deck-5").src = "imgs/card_back.png"
+document.getElementById("deck-5").src = "imgs/card_back1.png"
 document.getElementById("deck-5").onclick = " "
 
 }
@@ -381,7 +381,7 @@ document.getElementById("deck-6").src = "imgs/blank.png"
 document.getElementById("deck-6").onclick = " "
 
 }else {
-document.getElementById("deck-6").src = "imgs/card_back.png"
+document.getElementById("deck-6").src = "imgs/card_back1.png"
 document.getElementById("deck-6").onclick = " "
 
 }
@@ -394,7 +394,7 @@ if (unifiedCardDeck[0].injeraCardDeck1filtered.length <= 0){
     document.getElementById("deck-1").onclick = " "
 
 }else {
-  document.getElementById("deck-1").src = "imgs/card_back_1.png"
+  document.getElementById("deck-1").src = "imgs/card_back1.png"
   document.getElementById("deck-1").onclick = playFromDeck1
 
 }
@@ -403,7 +403,7 @@ if (unifiedCardDeck[0].injeraCardDeck2filtered.length <= 0){
   document.getElementById("deck-2").onclick = " "
 
 }else {
-document.getElementById("deck-2").src = "imgs/card_back_2.png"
+document.getElementById("deck-2").src = "imgs/card_back1.png"
 document.getElementById("deck-2").onclick = playFromDeck2
 
 }
@@ -413,7 +413,7 @@ if (unifiedCardDeck[0].injeraCardDeck3filtered.length <= 0){
   document.getElementById("deck-3").onclick = " "
 
 }else {
-document.getElementById("deck-3").src = "imgs/card_back_3.png"
+document.getElementById("deck-3").src = "imgs/card_back1.png"
 document.getElementById("deck-3").onclick = playFromDeck3
 
 }
@@ -423,7 +423,7 @@ if (unifiedCardDeck[0].injeraCardDeck4filtered.length <= 0){
   document.getElementById("deck-4").onclick = " "
 
 }else {
-document.getElementById("deck-4").src = "imgs/card_back_4.png"
+document.getElementById("deck-4").src = "imgs/card_back1.png"
 document.getElementById("deck-4").onclick = playFromDeck4
 
 }
@@ -433,7 +433,7 @@ if (unifiedCardDeck[0].injeraCardDeck5filtered.length <= 0){
   document.getElementById("deck-5").onclick = " "
 
 }else {
-document.getElementById("deck-5").src = "imgs/card_back_5.png"
+document.getElementById("deck-5").src = "imgs/card_back1.png"
 document.getElementById("deck-5").onclick = playFromDeck5
 
 }
@@ -442,7 +442,7 @@ if (unifiedCardDeck[0].injeraCardDeck6filtered.length <= 0){
   document.getElementById("deck-6").onclick = " "
 
 }else {
-document.getElementById("deck-6").src = "imgs/card_back_6.png"
+document.getElementById("deck-6").src = "imgs/card_back1.png"
 document.getElementById("deck-6").onclick = playFromDeck6
 
 }
