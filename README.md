@@ -42,9 +42,9 @@ From the terminal, **change to the directory containing the server.js file (In s
 
 #  Built With
 
-*Express *- Web framework
-*Socekt.IO *- Real-time bidirectional event-based communication
-#Authors
+Express - Web framework
+Socekt.IO - Real-time bidirectional event-based communication
+# Authors
 
 - **fenkl12**
 
