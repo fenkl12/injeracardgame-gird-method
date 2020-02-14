@@ -1,6 +1,6 @@
 Injera Card Game is simple two player card game where the goal is to accumulate as many cards as possible by selecting faced down cards and matching them to faced up cards in the middle pile. The cards are arranged in a circular fashion similar to the Ethiopian/Eritrean food Injera – hence the name.
 
-Visit https://injera-grid.herokuapp.com to play.
+Visit https://injera-grid.herokuapp.com to play. Open the link on two different browser windows. 
 
 # **How to Play**
 
