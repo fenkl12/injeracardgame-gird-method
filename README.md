@@ -56,5 +56,5 @@ This project is licensed under the MIT License.
 # Acknowledgments
 
 Thanks to all for trying the game out
-The inspiration behind the game is for a JS learning project and also trying to recreate a simple game I have many memories playing thought my childhood.
+The inspiration behind the game is for a JS learning project and also trying to recreate a simple game I have many childhood memories playing.
 Any feedback is welcome.
